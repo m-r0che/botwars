@@ -50,5 +50,5 @@ Open `http://localhost:5173` in your browser. You can use the preset bots withou
 - **Three.js** — 3D rendering, post-processing
 - **Vite** — dev server + API proxy middleware
 - **TypeScript** — throughout
-- **Anthropic Claude API** — bot generation and mid-battle evolution
+- **Anthropic Claude API / OpenAI API** — bot generation and mid-battle evolution
 - **Web Workers** — sandboxed bot AI execution
