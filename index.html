@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOTWARS ARENA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Title Screen -->
+    <div id="title-screen" class="screen active">
+      <div class="title-content">
+        <h1 class="glitch-text" data-text="BOTWARS ARENA">BOTWARS ARENA</h1>
+        <div class="title-subtitle">AI vs AI Battle Arena</div>
+        <button id="btn-start" class="blink-text">PRESS START</button>
+      </div>
+    </div>
+
+    <!-- Bot Creation Screen -->
+    <div id="creation-screen" class="screen">
+      <h2 class="screen-title">CREATE YOUR BOTS</h2>
+      <div class="creation-panels">
+        <div class="bot-panel" data-player="1">
+          <div class="panel-header p1">PLAYER 1</div>
+          <label class="pixel-label">Name:</label>
+          <input type="text" id="p1-name" class="pixel-input" placeholder="Bot name..." maxlength="16" value="Berserker" />
+          <label class="pixel-label">Describe your bot:</label>
+          <textarea id="p1-personality" class="pixel-textarea" placeholder="A fierce warrior who never backs down from a fight..."
+            rows="5">A reckless warrior who charges in headfirst and never retreats</textarea>
+          <button id="p1-generate" class="btn-generate">GENERATE BOT</button>
+          <div id="p1-status" class="bot-status"></div>
+          <details id="p1-code-peek" class="code-peek" style="display:none">
+            <summary>Peek at code</summary>
+            <pre id="p1-code" class="code-block"></pre>
+          </details>
+        </div>
+
+        <div class="panel-divider"></div>
+
+        <div class="bot-panel" data-player="2">
+          <div class="panel-header p2">PLAYER 2</div>
+          <label class="pixel-label">Name:</label>
+          <input type="text" id="p2-name" class="pixel-input" placeholder="Bot name..." maxlength="16" value="Ghost" />
+          <label class="pixel-label">Describe your bot:</label>
+          <textarea id="p2-personality" class="pixel-textarea" placeholder="A sneaky sniper who hides behind pillars..."
+            rows="5">A patient assassin who keeps distance and strikes from the shadows</textarea>
+          <button id="p2-generate" class="btn-generate">GENERATE BOT</button>
+          <div id="p2-status" class="bot-status"></div>
+          <details id="p2-code-peek" class="code-peek" style="display:none">
+            <summary>Peek at code</summary>
+            <pre id="p2-code" class="code-block"></pre>
+          </details>
+        </div>
+      </div>
+
+      <div class="preset-row">
+        <span class="pixel-label">Quick presets:</span>
+        <button class="btn-preset" data-preset="berserker" data-player="1">Berserker</button>
+        <button class="btn-preset" data-preset="sniper" data-player="1">Sniper</button>
+        <button class="btn-preset" data-preset="trapper" data-player="1">Trapper</button>
+        <button class="btn-preset" data-preset="turtle" data-player="2">Turtle</button>
+        <button class="btn-preset" data-preset="chaotic" data-player="2">Chaotic</button>
+      </div>
+
+      <button id="btn-battle" class="btn-battle" disabled>BATTLE!</button>
+    </div>
+
+    <!-- Battle Screen -->
+    <div id="battle-screen" class="screen">
+      <div id="hud">
+        <div class="hud-bar p1-hud">
+          <span id="hud-p1-name" class="hud-name">P1</span>
+          <div class="bar-container">
+            <div id="hud-p1-hp" class="bar hp-bar" style="width:100%"></div>
+          </div>
+          <span id="hud-p1-hp-text" class="bar-text">100</span>
+          <div class="bar-container energy-container">
+            <div id="hud-p1-energy" class="bar energy-bar" style="width:100%"></div>
+          </div>
+        </div>
+        <div id="hud-timer" class="hud-timer">100s</div>
+        <div class="hud-bar p2-hud">
+          <span id="hud-p2-name" class="hud-name">P2</span>
+          <div class="bar-container">
+            <div id="hud-p2-hp" class="bar hp-bar" style="width:100%"></div>
+          </div>
+          <span id="hud-p2-hp-text" class="bar-text">100</span>
+          <div class="bar-container energy-container">
+            <div id="hud-p2-energy" class="bar energy-bar" style="width:100%"></div>
+          </div>
+        </div>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div id="announcer"></div>
+      <div id="damage-numbers"></div>
+      <div id="battle-log">
+        <div id="battle-log-content"></div>
+      </div>
+    </div>
+
+    <!-- Win Screen -->
+    <div id="win-screen" class="screen">
+      <div class="win-content">
+        <div id="win-announcement" class="win-title"></div>
+        <div id="win-stats" class="win-stats"></div>
+        <div class="win-buttons">
+          <button id="btn-rematch" class="btn-battle">REMATCH</button>
+          <button id="btn-new-bots" class="btn-generate">NEW BOTS</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
